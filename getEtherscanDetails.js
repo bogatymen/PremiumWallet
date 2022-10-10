@@ -16,10 +16,10 @@ const txHashERC721 = "0xe94fb01d78dd1d7456eb1384539a423b529c09ed6a0719609ee4ac7a
 const txHashERC1155 = "0xc38d929f6b0b857c5a9993b2bb764b68dd747b491b66728a5f0579210782b668";
 
 const main = async () => {
-    //let txData = await provider.getTransaction(txHashETH);
-    //console.log(txData);
+    let txData0 = await provider.getTransaction(txHashETH);
+    //console.log(txData0);
     let txData = await provider.getTransactionReceipt(txHashETH);
-    console.log(txData);
+    //console.log(txData);
     let status = "false" ; 
     if (txData.status == 1){status = "Confirmed"}
 
@@ -29,8 +29,7 @@ Status: ${status}\n \
 From: ${txData.from} \n \
 To: ${txData.to} \n \
 Gas Used: ${txData.gasUsed} \n \
-Logs: ${txData.value}`);
-    
+Value: ${ethers.utils.formatEther(txData0.value)} ETH`);
 
 }
 main();
